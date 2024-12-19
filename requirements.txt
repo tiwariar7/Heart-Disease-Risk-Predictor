@@ -4,3 +4,4 @@ Werkzeug
 joblib
 numpy
 scikit-learn
+gunicorn
