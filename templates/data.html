@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stored Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for("static", filename="bg.png") }}');
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #cd0000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .nav {
+            background-color: #333;
+            overflow: hidden;   
+        }
+        .nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #c60808;
+        }
+        .container {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 40px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #fbfdff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+        table {
+            width: 80%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            transition: filter 0.3s ease-in-out;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e5e3e3;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+        /* Blurring effect for unauthorized users */
+        .blurred {
+            filter: blur(10px);
+            pointer-events: none;
+        }
+        .blurred-message {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Predict Heart Disease Risk</h2>
+        <p>AI-Powered Health Prediction Tool</p>
+    </div>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/about">About Project</a>
+        <a href="/contact">Contact</a>
+        <a href="/data">DataBase</a>
+        <div style="float: right; display: flex; align-items: center; padding-right: 10px;">
+            {% if 'user' in session %}
+                <a href="/dashboard" class="account">
+                    <img src="{{ url_for('static', filename='a.png') }}" alt="Account" 
+                         style="width: 30px; height: 30px; border-radius: 50%; margin-left: 10px;">
+                </a>
+            {% else %}
+                <a href="/login" style="color: white; text-decoration: none; padding-left: 10px;">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    {% if 'user' in session %}
+        <!-- Show the table normally for logged-in users -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in data %}
+                    <tr>
+                        <td>{{ entry.name }}</td>
+                        <td>{{ entry.result }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <!-- Blur the table and show a login prompt for non-logged-in users -->
+        <table class="blurred">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in data %}
+                    <tr>
+                        <td>Hidden</td>
+                        <td>Hidden</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="blurred-message">
+            Please <a href="/login" style="color: blue;">Sign In</a> to access the data.
+        </div>
+    {% endif %}
+</body>
+</html>

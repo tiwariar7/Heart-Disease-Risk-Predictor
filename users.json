@@ -1,0 +1,6 @@
+{ 
+    "sample@arman.com": {
+        "username": "tiwari09",
+        "password": "scrypt:32768:8:1$xpKqYsrBMPeQveJ4$fa6b74c3b73077bc50d9c15097d79e4396dc52f22807216d120e91b820aec75b73e5e629af54bbc5e70928e137bceb44e1161adee3b661e368808e4ce47705ac"
+    } 
+}

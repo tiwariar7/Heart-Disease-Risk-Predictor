@@ -1,0 +1,27 @@
+[
+    {
+        "name": "John Doe",
+        "review": "This tool is amazing! It helped me a lot.",
+        "rating": 5
+    },
+    {
+        "name": "Jane Smith",
+        "review": "Easy to use and very accurate predictions.",
+        "rating": 4
+    },
+    {
+        "name": "Alex Brown",
+        "review": "Good tool, but needs more features.",
+        "rating": 3
+    },
+    {
+        "name": "Arman Tiwari",
+        "review": "Test Review",
+        "rating": 1
+    },
+    {
+        "name": "Aditya Kayasth",
+        "review": "Nice!!!! you saved my life",
+        "rating": 1
+    }
+]

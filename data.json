@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Ashh",
+        "result": "No Heart Disease Detected"
+    },
+    {
+        "name": "Patil",
+        "result": "Heart Disease Detected\nDisease Type: Diabetes-Related Disease"
+    },
+    {
+        "name": "Nitin",
+        "result": "Heart Disease Detected\nDisease Type: Hypertension-Related Disease"
+    },
+    {
+        "name": "Akshit",
+        "result": "No Heart Disease Detected"
+    },
+    {
+        "name": "Anup",
+        "result": "Heart Disease Detected\nDisease Type: Low Risk"
+    },
+    {
+        "name": "Anuj",
+        "result": "No Heart Disease Detected"
+    },
+    {
+        "name": "Lee",
+        "result": "Heart Disease Detected\nDisease Type: Coronary Artery Disease"
+    },
+    {
+        "name": "QWERT",
+        "result": "No Heart Disease Detected"
+    },
+    {
+        "name": "Nishant Rajeshprasad Tiwari",
+        "result": "Heart Disease Detected"
+    }
+]

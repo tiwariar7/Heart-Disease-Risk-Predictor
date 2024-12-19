@@ -1,0 +1,226 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Risk Predictor</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react@1.0.0/dist/lucide-react.min.js"></script>
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url('{{ url_for("static", filename="bg.png") }}');
+        background-size: cover;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+    .header {
+        background-color: #cd0000;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+    }
+    .nav {
+        background-color: #333;
+        overflow: hidden;
+    }
+    .nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    .nav a:hover {
+        background-color: #c60808;
+    }
+    .container {
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.9);
+        margin: 40px auto;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #fbfdff;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+    img {
+        display: block;
+        max-width: 100%;
+        height: 40 px;
+        margin: 20px auto;
+    }
+    /* Chatbot Styles */
+    .chatbot-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: url("{{ url_for('static', filename='c.png') }}") no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .chatbot-container {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+    .chatbot-header {
+        background-color: #cd0000;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .chatbot-body {
+        padding: 10px;
+        overflow-y: auto;
+        height: 320px;
+    }
+    .chatbot-footer {
+        padding: 10px;
+    }
+    .chatbot-footer input {
+        width: calc(100% - 20px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .chatbot-footer input:focus {
+        outline: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="header">
+    <h2>Predict Heart Disease Risk</h2>
+    <p>AI-Powered Health Prediction Tool</p>
+  </div>
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="/about">About Project</a>
+    <a href="/contact">Contact</a>
+    <a href="/data">DataBase</a>
+    <div style="float: right; display: flex; align-items: center; padding-right: 10px;">
+        {% if 'user' in session %}
+            <a href="/dashboard" class="account">
+                <img src="{{ url_for('static', filename='a.png') }}" alt="Account" 
+                     style="width: 30px; height: 30px; border-radius: 50%; margin-left: 10px;">
+            </a>
+        {% else %}
+            <a href="/login" style="color: white; text-decoration: none; padding-left: 10px;">Login</a>
+        {% endif %}
+    </div>
+</div>
+<div class="max-w-4xl mx-auto text-center">
+  <div class="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-xl">
+    <div class="mx-auto mb-6">
+      <svg class="w-16 h-16 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+      </svg>
+    </div>
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Heart Disease Risk Predictor</h1>
+    <p class="text-xl text-gray-600 mb-8">
+      Take control of your heart health with our advanced risk assessment tool.
+      Get personalized insights and recommendations based on your health metrics.
+    </p>
+    <a href="/predictor" class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors">
+      Start Assessment
+      <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+    <div class="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Quick Assessment</h3>
+      <p class="text-gray-600">Get instant results based on your health metrics</p>
+    </div>
+    <div class="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Privacy</h3>
+      <p class="text-gray-600">Your health information is secure and private</p>
+    </div>
+    <div class="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg">
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">Expert Insights</h3>
+      <p class="text-gray-600">Receive professional health recommendations</p>
+    </div>
+  </div>
+</div>
+
+  <!-- Chatbot Button -->
+  <div class="chatbot-btn" id="chatbotBtn"></div>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header">Chat with us</div>
+    <div class="chatbot-body" id="chatbotBody"></div>
+    <div class="chatbot-footer">
+      <input type="text" id="chatbotInput" placeholder="Type your question here...">
+    </div>
+  </div>
+
+  <script>
+    const chatbotBtn = document.getElementById('chatbotBtn');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotBody = document.getElementById('chatbotBody');
+  
+    const responses = {
+      "about project": "This project predicts heart disease risk using advanced machine learning techniques.",
+      "technologies used": "Python, Flask, and ML models such as Random Forest and XGBoost.",
+      "real-time prediction": "The tool provides real-time predictions based on user input."
+    };
+  
+    chatbotBtn.addEventListener('click', () => {
+      chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+    });
+  
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const userInput = chatbotInput.value.toLowerCase();
+        chatbotInput.value = '';
+  
+        const userMessage = document.createElement('div');
+        userMessage.style.textAlign = 'right';
+        userMessage.textContent = userInput;
+        chatbotBody.appendChild(userMessage);
+  
+        const botMessage = document.createElement('div');
+        botMessage.style.textAlign = 'left';
+        botMessage.textContent = responses[userInput] || "Sorry, I didn't understand that.";
+        chatbotBody.appendChild(botMessage);
+  
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+      }
+    });
+  </script>
+  
+
+</body>
+</html>
