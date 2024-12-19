@@ -2,10 +2,10 @@ Flask==2.2.5
 Flask-Dance==7.1.0  # Flask-Dance supports Google out-of-the-box
 Flask-Session==0.4.0
 flask-cors==5.0.0
-Flask-Werkzeug==2.3.4
 joblib==1.3.2
 numpy==1.25.2
 scikit-learn==1.2.2
-Werkzeug==2.3.4
+Werkzeug==2.3.4  # Corrected to install Werkzeug, not Flask-Werkzeug
 gunicorn==20.1.0
+psycopg2-binary==2.9.6  # If you're using PostgreSQL
 python-dotenv==1.0.0  # To manage environment variables
