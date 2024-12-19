@@ -1,7 +1,5 @@
 Flask==2.2.5
-Flask-Dance==7.1.0
-Flask-Dance-Google==7.1.0
-Flask-Dance-Github==7.1.0
+Flask-Dance==7.1.0  # Flask-Dance supports Google out-of-the-box
 Flask-Session==0.4.0
 flask-cors==5.0.0
 Flask-Werkzeug==2.3.4
