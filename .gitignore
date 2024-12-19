@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Other environment-specific files
+*.log
+*.bak
+*.swp
+
+# Dependency directories
+node_modules/
+*.pyo
