@@ -102,7 +102,7 @@ Follow these steps to set up the Flask app:
 
 4. **Run the Application**:
    ```bash
-   flask run
+   python app.py
    ```
 
 5. **Access the Application**:
