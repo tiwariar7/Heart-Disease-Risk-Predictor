@@ -256,7 +256,7 @@ Follow these steps to set up the Flask app:
 **Relevance**: Aligns with your model's multi-class target encoding.  
 **Link**: Available via ACM Digital Library.
 
-
+---
 
 ### Conclusion
 
