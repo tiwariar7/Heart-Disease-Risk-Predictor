@@ -110,6 +110,31 @@ Follow these steps to set up the Flask app:
 
 ---
 
+## Key Milestones
+
+1. **Data Preprocessing Completed**:
+   - Outlier removal and feature normalization finalized.
+   - Clustering implemented to uncover gender-specific health profiles.
+2. **Feature Engineering Introduced**:
+   - BMI, MAP calculations, and age segmentation integrated.
+3. **Machine Learning Models Developed**:
+   - Multiple algorithms tested and Random Forest selected as the best performer.
+4. **Deployment Achieved**:
+   - Flask-based web application successfully deployed to [Render](https://heart-disease-risk-predictor.onrender.com/).
+
+---
+
+## Project Outcomes
+
+1. **Improved Risk Stratification**:
+   - Enhanced prediction capabilities with multi-class target encoding.
+2. **User-Friendly Interface**:
+   - Real-time prediction system empowers users with actionable health insights.
+3. **Scalable Framework**:
+   - Modular codebase and deployment-ready setup for further development.
+
+---
+
 ## Project Flowchart
 
 ### Data Processing Flow:
