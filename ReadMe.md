@@ -1,4 +1,4 @@
-# Enhanced Heart Disease Risk Classification Model
+# Enhanced Heart Disease Risk Prediction Model
 
 ## Overview
 This project reimagines heart disease risk prediction by transforming raw medical data into actionable insights. It employs advanced data preprocessing, feature engineering, and state-of-the-art machine learning techniques to achieve reliable and meaningful predictions of heart disease risk.
